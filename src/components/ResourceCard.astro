@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  locked: boolean;
+}
+
+const { title, description, icon, locked } = Astro.props;
+---
+
+<div class="bg-white rounded-xl shadow-soft hover:shadow-lg transition-shadow duration-200 overflow-hidden group">
+  <div class="p-6">
+    <div class="flex items-start justify-between">
+      <span class="text-4xl">{icon}</span>
+      {locked && (
+        <span class="text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+          </svg>
+        </span>
+      )}
+    </div>
+    <h3 class="mt-4 text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors duration-200">{title}</h3>
+    <p class="mt-2 text-gray-600">{description}</p>
+  </div>
+  <div class="px-6 py-4 bg-gray-50 border-t border-gray-100">
+    <a href="#" class="text-primary hover:text-primary-dark font-medium">Learn more →</a>
+  </div>
+</div>

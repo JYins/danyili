@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NewsCarousel from '../components/NewsCarousel';
+import ResourceGrid from '../components/ResourceGrid.astro';
+import DiscussionSection from '../components/DiscussionSection.astro';
+---
+
+<Layout title="但以理和他的朋友们 - 教会资源网站">
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-secondary-light to-white py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
+            但以理和他的朋友们
+            <span class="text-primary">在主里同行</span>
+          </h1>
+          <p class="mt-6 max-w-md mx-auto text-lg text-gray-600 sm:text-xl md:max-w-3xl font-light">
+            在这里，我们一同学习、成长，共同建立属灵的家园
+          </p>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl">
+        <div class="aspect-[4/1] bg-gradient-to-b from-secondary-light/20 to-transparent rounded-t-full blur-3xl"></div>
+      </div>
+    </section>
+
+    <!-- News Carousel -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">教会动态</h2>
+        <NewsCarousel client:load />
+      </div>
+    </section>
+
+    <!-- Resources Grid -->
+    <section class="py-20 bg-gradient-to-b from-white to-secondary-light/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">资源中心</h2>
+        <ResourceGrid />
+      </div>
+    </section>
+
+    <!-- Discussion Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-12">圣徒交流</h2>
+          <DiscussionSection />
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

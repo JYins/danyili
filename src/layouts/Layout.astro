@@ -1,0 +1,60 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="但以理和他的朋友们 - 教会资源网站" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-white to-secondary-light/30">
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary: #FFB17A;
+    --primary-light: #FFD4B3;
+    --primary-dark: #FF9142;
+    --secondary: #91B4ED;
+    --secondary-light: #E6F0FF;
+    --secondary-dark: #6B96E1;
+    --text-primary: #2C3E50;
+    --text-secondary: #666666;
+  }
+  
+  html {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #ffffff;
+    scroll-behavior: smooth;
+    color: var(--text-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif SC', serif;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+</style>

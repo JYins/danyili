@@ -1,0 +1,133 @@
+---
+interface Resource {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  type: 'public' | 'private';
+  category: string;
+  url: string;
+}
+
+const publicResources: Resource[] = [
+  {
+    id: 'sermons',
+    title: '布道会视频',
+    description: '观看最新布道会视频',
+    icon: '🎥',
+    type: 'public',
+    category: 'video',
+    url: '/sermons'
+  },
+  {
+    id: 'beginner-teachings',
+    title: '初心者话语视频',
+    description: '适合初信者的基础教导',
+    icon: '📺',
+    type: 'public',
+    category: 'video',
+    url: '/teachings/beginner'
+  },
+  {
+    id: 'life-teachings',
+    title: '生活话语视频',
+    description: '日常生活中的属灵教导',
+    icon: '🌱',
+    type: 'public',
+    category: 'video',
+    url: '/teachings/life'
+  },
+  {
+    id: 'bible-letter',
+    title: 'Bible Letter',
+    description: '灵修图片与经文',
+    icon: '📖',
+    type: 'public',
+    category: 'image',
+    url: '/bible-letter'
+  }
+];
+
+const privateResources: Resource[] = [
+  {
+    id: 'meditation',
+    title: '话语默想视频',
+    description: '深入的话语默想与解读',
+    icon: '🎯',
+    type: 'private',
+    category: 'video',
+    url: '/teachings/meditation'
+  },
+  {
+    id: 'worship',
+    title: '赞美歌曲',
+    description: '诗歌视频、音频与歌谱',
+    icon: '🎵',
+    type: 'private',
+    category: 'music',
+    url: '/worship'
+  },
+  {
+    id: 'books',
+    title: '图书',
+    description: '在线阅读属灵书籍',
+    icon: '📚',
+    type: 'private',
+    category: 'book',
+    url: '/books'
+  },
+  {
+    id: 'church-info',
+    title: '教会信息',
+    description: '教会动态与通知',
+    icon: '🏛️',
+    type: 'private',
+    category: 'info',
+    url: '/church-info'
+  }
+];
+
+const isLoggedIn = false; // This would be replaced with actual auth check
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  {publicResources.map(resource => (
+    <a href={resource.url} class="block">
+      <div class="bg-white rounded-xl shadow-soft hover:shadow-lg transition-all duration-200 overflow-hidden group">
+        <div class="p-6">
+          <div class="flex items-start justify-between">
+            <span class="text-4xl">{resource.icon}</span>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors duration-200">
+            {resource.title}
+          </h3>
+          <p class="mt-2 text-gray-600">{resource.description}</p>
+        </div>
+      </div>
+    </a>
+  ))}
+  
+  {privateResources.map(resource => (
+    <div class="relative group">
+      <div class="bg-white rounded-xl shadow-soft overflow-hidden filter blur-[2px] group-hover:blur-[1px] transition-all duration-200">
+        <div class="p-6">
+          <div class="flex items-start justify-between">
+            <span class="text-4xl opacity-50">{resource.icon}</span>
+            <span class="text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-gray-900 opacity-50">{resource.title}</h3>
+          <p class="mt-2 text-gray-600 opacity-50">{resource.description}</p>
+        </div>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <button class="px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+          登录查看
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
